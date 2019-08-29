@@ -1,0 +1,41 @@
+<div class="row">
+	<div class="col-4">
+		<h2>Sticker {{userService.currentSticker.order}} of {{userService.stickers.length}}</h2>
+	</div>
+	<div class="col-8">
+
+	</div>
+</div>
+<form #surveyForm="ngForm" (ngSubmit)="nextSticker(surveyForm)">
+	<div class="row">
+		<div class="col-4">
+			<app-sticker [condition]=userService.currentSticker (played)="onPlayed($event)"></app-sticker>
+				<ul *ngIf="inDevMode">
+					<li>Presentation: {{userService.currentSticker.presentation}}</li>
+					<li>Relevance: {{userService.currentSticker.relevance}}</li>
+					<li>Context: {{userService.currentSticker.context}}</li>
+					<li>Scenario: {{userService.currentSticker.scenario}}</li>
+					<li>Style: {{userService.currentSticker.style}}</li>
+					<li>Domain: {{userService.currentSticker.domain}}</li>
+					<li>Role: {{userService.currentSticker.role}}</li>
+					<li>Use Case: {{userService.currentSticker.usecase}}</li>
+				</ul>
+		</div>
+		<div class="col-8" [class.disabled]="!enableResponse">
+			<em>Based on this Snap, please rate to what level you agree with each of the following statements.</em>
+			<app-sharer-likerts #sharerLikerts *ngIf="this.userService.role == 'sharer'"></app-sharer-likerts>
+			<app-recipient-likerts #recipientLikerts *ngIf="this.userService.role == 'recipient'"></app-recipient-likerts>
+		</div>
+		<div class="col-8" [class.disabled]="enableResponse">
+			<em>Please look at the Snap on the left.</em>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-4">
+			<button *ngIf="inDevMode" class="btn btn-warning" (click)="resetUser()">Reset</button>
+		</div>
+		<div class="col-8" [class.disabled]="!enableResponse">
+			<button type="submit" class="btn btn-primary">Next</button>
+		</div>
+	</div>
+</form>

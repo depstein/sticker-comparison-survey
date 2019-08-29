@@ -1,0 +1,33 @@
+<p>
+	In this survey, you will be asked to rate <strong>{{this.userService.stickers.length}}</strong> Snap Stories which contain stickers showing a person's <strong>{{this.userService.domain}}</strong>.
+</p>
+<p>
+	Pick one person who you freqently Snap with. What is that person's relationship to you (close friend, family member, etc.)?
+  <input type="text" class="form-control" [ngClass]=personValid name="person" [(ngModel)]=person>
+</p>
+<p>
+  For each Snap in the study, imagine you are <strong>{{this.userService.role == "sharer" ? "sending" : "receiving"}}</strong> it {{this.userService.role == "sharer" ? "to" : "from"}} them.
+</p>
+<p *ngIf="mturk">
+	You will be asked a few demographic questions at the end of the survey. After this, you will be given a confirmation code to use on Amazon Mechanical Turk.
+</p>
+<p *ngIf="!mturk">
+  You will be asked a few demographic questions at the end of the survey.
+</p>
+<p>
+	There are no "right" or "wrong" answers in this survey. <strong>Please answer as honestly as possible</strong>.
+</p>
+<p>
+  If possible, please complete this survey on a large screen (desktop, laptop, etc.).
+</p>
+<form #instructionsForm="ngForm" (ngSubmit)="submit(instructionsForm)">
+	<div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" name="understandCheck" type="checkbox" value="" [ngClass]=understandValid [(ngModel)]=understandCheck id="understandCheck">
+      <label class="form-check-label" for="understandCheck">
+        I understand
+      </label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Next</button>
+</form>
