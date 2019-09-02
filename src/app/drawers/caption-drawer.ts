@@ -8,7 +8,7 @@ export class CaptionDrawer {
 	ratio:number;
 
 	static readonly ScenarioTextMap = {
-		'steps': [['A nice day\nfor hiking! ⛰️', 'So many trees 🌲', 'Heading back down'], ['Getting in\na workout! 🏃‍♀️', 'Still going...', 'Time for\na break 😪'], ['Strolling through\nthe park', 'Nice views\nof the lake', 'Making some\nnew friends 🦆'], ['Coffee break!\nGoing outside ☕', ['Too much time\nat the desk'], ['Another quick walk\nover lunch']]]
+		'steps': [['A nice day\nfor hiking! ⛰️', 'So many trees 🌲', 'Heading back down'], ['Getting in\na workout! 🏃‍♀️', 'Still going...', 'Time for\na break 😪'], ['Strolling through\nthe park', 'Nice views\nof the lake', 'Making some\nnew friends 🦆'], ['Coffee break!\nGoing outside ☕', 'Too much time\nat the desk', 'Another quick walk\nover lunch']]
 	}
 
 	constructor(condition:Condition, canvasWidth:number, canvasHeight:number, ratio:number) {
@@ -24,9 +24,11 @@ export class CaptionDrawer {
 
 	//Image onload is async, so use a promise so the background is always drawn first.
 	drawCaption(frame:number):Promise<void> {
-		switch(frame) {
-			//TODO: switch based on the frame as well...
-			
+		let switchOn = this.condition.scenario;
+		if(this.condition.usecase == "story") {
+			switchOn = frame;
+		}
+		switch(switchOn) {
 			//position slightly differently in each scenario
   			//All captions are delicately positioned relative to their rotation...
 			case 0:
@@ -88,6 +90,19 @@ export class CaptionDrawer {
 					this.context.fillRect(xPosition - buffer + (maxWidth - textWidth)/2, yPosition + (fontSize + 1 + 1.3*buffer)*i, textWidth + 2*buffer, fontSize + buffer);
 					this.context.fillStyle = "#FFFFFF";
 					this.context.fillText(v, xPosition + (maxWidth - textWidth)/2, yPosition + fontSize/5 + buffer + (fontSize + 1 + 1.3*buffer)* i);
+				});
+				break;
+			case 3:
+				var xPosition = 60;
+  				var yPosition = 480;
+  				var fontSize = 30;
+  				this.context.rotate(5 * Math.PI / 180);
+  				this.context.font = "bold " + fontSize + "px Arial";
+  				var maxWidth = Math.max(...this.getText(frame).map((v => {return this.context.measureText(v).width;})));
+				this.getText(frame).forEach((v, i) => {
+					let textWidth = this.context.measureText(v).width;
+					this.context.fillStyle = "#D1F542";
+					this.context.fillText(v, xPosition + (maxWidth - textWidth)/2, yPosition + fontSize/5 + (fontSize + 1)* i);
 				});
 		}
 		return Promise.resolve();

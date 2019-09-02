@@ -144,7 +144,7 @@ export class StickerComponent implements OnInit {
     this.background = new BackgroundDrawer(this.condition, this.canvasWidth, this.canvasHeight, this.ratio);
     this.caption = new CaptionDrawer(this.condition, this.canvasWidth, this.canvasHeight, this.ratio);
     this.sticker = new StickerDrawer(this.condition, this.canvasWidth, this.canvasHeight, this.ratio);
-    this.overlay = new OverlayDrawer(this.condition, this.canvasWidth, this.canvasWidth, this.ratio, this.userService.person, this.snapDuration, this.refreshRate);
+    this.overlay = new OverlayDrawer(this.condition, this.canvasWidth, this.canvasWidth, this.ratio, this.userService.senderOrRecipient, this.snapDuration, this.refreshRate);
     this.sticker.context = this.context;
     this.background.context = this.context;
     this.caption.context = this.context;

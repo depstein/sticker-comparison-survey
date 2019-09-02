@@ -28,7 +28,11 @@ export class StickerDrawer {
 			      		case "yes":
 			      			//smaller sticker, position slightly differently in each scenario
 			      			//All stickers are delicately positioned relative to their rotation...
-			      			switch(frame) {
+			      			let switchOn = this.condition.scenario;
+							if(this.condition.usecase == "story") {
+								switchOn = frame;
+							}
+			      			switch(switchOn) {
 			      				case 0:
 			      				xPosition = 90;
 			      				yPosition = 0;
@@ -43,6 +47,11 @@ export class StickerDrawer {
 			      				this.context.rotate(15 * Math.PI / 180);
 			      				xPosition = 140;
 			      				yPosition = 370;
+			      				break;
+			      				case 3:
+			      				xPosition = 90;
+			      				yPosition = 0;
+			      				this.context.rotate(30 * Math.PI / 180);
 			      				break;
 			      			}
 			      		break;

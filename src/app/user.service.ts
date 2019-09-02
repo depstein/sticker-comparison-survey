@@ -30,6 +30,14 @@ export class UserService {
   	return this.stickers[this.stickerIndex];
   }
 
+  get senderOrRecipient():string {
+    if(this.role == 'sharer') {
+      return 'Me';
+    } else {
+      return this.person;
+    }
+  }
+
   selectDomainAndRole() {
     this.role = UserService.ROLES[this.upTo(UserService.ROLES.length)];
     this.domain = UserService.DOMAINS[this.upTo(UserService.DOMAINS.length)];
