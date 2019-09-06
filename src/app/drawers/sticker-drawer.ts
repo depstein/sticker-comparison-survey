@@ -17,7 +17,7 @@ export class StickerDrawer {
 
 	drawSticker(frame:number):Promise<void> {
 		return new Promise((resolve, reject) => {
-			if(this.condition.usecase == 'story' || this.condition.usecase == 'message') {
+			if(this.condition.presentation != 'none') {
 				let image = new Image();
 		      	image.src = this.imageUrl(frame);
 			    image.onload = () => {

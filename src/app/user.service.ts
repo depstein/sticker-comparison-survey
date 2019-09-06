@@ -45,7 +45,7 @@ export class UserService {
 
   selectStickers() {
   	this.stickers = [];
-  	var presentations = this.shuffle([{p: 'chartjunk', r: 'yes', s:this.upTo(3), u:'message'}, {p: 'chartjunk', r: 'yes', s:this.upTo(3), u:'story'}, {p: 'plain', r: 'yes', s:this.upTo(3), u:'message'}, {p: 'plain', r: 'yes', s:this.upTo(3), u:'story'}, {p: 'analogy', r: 'yes', s:this.upTo(3), u:'message'}, {p: 'analogy', r: 'yes', s:this.upTo(3), u:'story'}, {p:'none', r:'yes', s:'none', u:'none'}, {p:'none', r:'yes', s:'none', u:'none'}]);
+  	var presentations = this.shuffle([{p: 'chartjunk', r: 'yes', s:this.upTo(3), u:'message'}, {p: 'chartjunk', r: 'yes', s:this.upTo(3), u:'story'}, {p: 'plain', r: 'yes', s:this.upTo(3), u:'message'}, {p: 'plain', r: 'yes', s:this.upTo(3), u:'story'}, {p: 'analogy', r: 'yes', s:this.upTo(3), u:'message'}, {p: 'analogy', r: 'yes', s:this.upTo(3), u:'story'}, {p:'none', r:'yes', s:'none', u:'message'}, {p:'none', r:'yes', s:'none', u:'story'}]);
   	//always in context
     var contexts = this.shuffle([{c: 'yes', s:0}, {c: 'yes', s:1}, {c: 'yes', s:2}, {c: 'yes', s:3}, {c: 'yes', s:0}, {c: 'yes', s:1}, {c: 'yes', s:2}, {c: 'yes', s:3}]);
   	for(var i=0;i<8;i++) {

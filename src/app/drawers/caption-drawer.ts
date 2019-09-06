@@ -8,7 +8,7 @@ export class CaptionDrawer {
 	ratio:number;
 
 	static readonly ScenarioTextMap = {
-		'steps': [['A nice day\nfor hiking! ⛰️', 'So many trees 🌲', 'Heading back down'], ['Getting in\na workout! 🏃‍♀️', 'Still going...', 'Time for\na break 😪'], ['Strolling through\nthe park', 'Nice views\nof the lake', 'Making some\nnew friends 🦆'], ['Coffee break!\nGoing outside ☕', 'Too much time\nat the desk', 'Another quick walk\nover lunch']]
+		'steps': [['A nice day\nfor hiking! ⛰️', 'So many trees 🌲', 'Heading back down'], ['Getting in\na workout! 🏃‍♀️', 'Still going...', 'Time for\na break 😪'], ['Strolling through\nthe park', 'Nice views\nof the lake', 'Making some\nnew friends 🦆'], ['Being a tourist in DC', 'Walking the\nNational Mall 🇺🇸', 'Looking around\n🐘 the museums']]
 	}
 
 	constructor(condition:Condition, canvasWidth:number, canvasHeight:number, ratio:number) {
