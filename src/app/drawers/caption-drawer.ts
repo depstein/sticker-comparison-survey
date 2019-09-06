@@ -8,7 +8,7 @@ export class CaptionDrawer {
 	ratio:number;
 
 	static readonly ScenarioTextMap = {
-		'steps': [['A nice day\nfor hiking! ⛰️', 'So many trees 🌲', 'Heading back down'], ['Getting in\na workout! 🏃‍♀️', 'Still going...', 'Time for\na break 😪'], ['Strolling through\nthe park', 'Nice views\nof the lake', 'Making some\nnew friends 🦆'], ['Being a tourist in DC', 'Walking the\nNational Mall 🇺🇸', 'Looking around\n🐘 the museums']]
+		'steps': [['A nice day\nfor hiking! ⛰️', 'So many trees 🌲', 'Heading back down'], ['Getting in\na workout! 🏃‍♀️', 'Still going...', 'Time for\na break 😪'], ['Strolling through\nthe park', 'Nice views\nof the lake', 'Making some\nnew friends 🦆'], ['Being a tourist\nin DC', 'Walking the\nNational Mall 🇺🇸', 'Looking around\n🐘 the museums']]
 	}
 
 	constructor(condition:Condition, canvasWidth:number, canvasHeight:number, ratio:number) {
@@ -35,6 +35,9 @@ export class CaptionDrawer {
 				this.context.rotate(-15 * Math.PI / 180);
   				xPosition = -110;
   				yPosition = 480;
+  				if(this.condition.scenario == 3) {
+  					yPosition = 450;
+  				}
   				var fontSize = 30;
   				var buffer = 10;
   				this.context.font = "bold " + fontSize + "px Arial";
@@ -59,6 +62,9 @@ export class CaptionDrawer {
 			case 1:
 				var xPosition = 60;
   				var yPosition = 120;
+  				if(this.condition.scenario == 3) {
+  					yPosition = 50;
+  				}
   				var fontSize = 30;
   				var buffer = 10;
   				this.context.rotate(10 * Math.PI / 180);
@@ -79,6 +85,9 @@ export class CaptionDrawer {
 			case 2:
 				var xPosition = 0;
   				var yPosition = 100;
+  				if(this.condition.scenario == 3) {
+  					xPosition = 20;
+  				}
   				var fontSize = 18;
   				var buffer = 20;
   				this.context.rotate(-20 * Math.PI / 180);
@@ -94,7 +103,7 @@ export class CaptionDrawer {
 				break;
 			case 3:
 				var xPosition = 60;
-  				var yPosition = 480;
+  				var yPosition = 450;
   				var fontSize = 30;
   				this.context.rotate(5 * Math.PI / 180);
   				this.context.font = "bold " + fontSize + "px Arial";

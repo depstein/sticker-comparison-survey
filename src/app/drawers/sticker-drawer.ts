@@ -36,6 +36,10 @@ export class StickerDrawer {
 			      				case 0:
 			      				xPosition = 90;
 			      				yPosition = 0;
+			      				if(this.condition.scenario == 3) {
+				  					xPosition = 170;
+				  					yPosition = 200;
+				  				}
 			      				this.context.rotate(30 * Math.PI / 180);
 			      				break;
 			      				case 1:
@@ -49,8 +53,8 @@ export class StickerDrawer {
 			      				yPosition = 370;
 			      				break;
 			      				case 3:
-			      				xPosition = 90;
-			      				yPosition = 0;
+			      				xPosition = 170;
+			  					yPosition = 200;
 			      				this.context.rotate(30 * Math.PI / 180);
 			      				break;
 			      			}
